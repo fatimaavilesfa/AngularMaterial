@@ -1,0 +1,105 @@
+
+  <div class="example-container">
+    <div
+          cdkDropList
+          #iconList="cdkDropList"
+          [cdkDropListData]="icons"
+          (cdkDropListDropped)="drop($event)"
+          cdkDropListConnectedTo="childItems"
+          >
+        <div
+          class="square"
+          *ngFor="let icon of icons"
+          [cdkDragData]="icon"
+          cdkDrag>
+          <div  align="center" >
+          {{ icon }}
+            <i class="far fa-file-alt center" style="font-size: 50px;" ></i>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="example-container">
+      <h3>Line</h3>
+        <div
+            cdkDropList
+            #itemList="cdkDropList"
+            [cdkDropListData]="items"
+            (cdkDropListDropped)="drop($event)"
+            [cdkDropListConnectedTo]="[iconList, childItemList]">
+          <div
+            class="list-container"
+            *ngFor="let item of items"
+            cdkDrag>
+              {{ item }}
+          </div>
+        </div>
+    </div>
+
+
+
+
+    <div
+        dkDropList
+        (cdkDropListDropped)="drop($event)">
+      <div
+         *ngFor="let item of items"
+         cdkDrag
+         (cdkDragStarted)="dragStarted($event)"
+         (cdkDragEnded)="dragEnded($event)"
+         (cdkDragMoved)="dragMoved($event)">
+            <div class="card border-dark mb-3" style="max-width: 18rem;">
+              <div class="card-header">
+                  <i class="fas fa-arrows-alt" cdkDragHandle></i>
+                  {{ data.name }}
+                </div>
+                <div class="card-body">
+                <div class="card-body">
+                    <h5 class="card-title" class="text-center"> {{ item }} {{ data.title }}</h5>
+                    <button (click)="concat()"  class="btn btn-primary btn-sm">Edit</button>
+
+
+
+
+
+
+                        <h3>Child</h3>
+
+                        <div
+                            id="childItems"
+                            cdkDropList
+                            #childItemList="cdkDropList"
+                            [cdkDropListData]="childItems"
+                            (cdkDropListDropped)="drop($event)"
+                            [cdkDropListConnectedTo]="[iconList, itemList]">
+                          <div
+                            *ngFor="let childItem of childItems"
+                            cdkDrag>
+                            <div class="card">
+                                <div class="card-body">
+                              {{ childItem }}
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+
+
+
+                </div>
+              </div>
+
+      </div>
+    </div>
+  </div>
+
+
+  <!--
+  <div id="a"  class="square" style="position:0px"></div>
+<div id="b" class="square"></div>
+
+-->
+

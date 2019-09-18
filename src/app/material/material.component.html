@@ -1,0 +1,42 @@
+
+
+
+<!--handle need to be place in the corner-->
+<div cdkDrop>
+  <div class="caja" cdkDrag>
+      <i class="fas fa-arrows-alt" cdkDragHandle></i>
+    Drag Me
+  </div>
+</div>
+
+
+<!--List not in order items can move around anywhere-->
+<div
+     dkDropList
+     (cdkDropListDropped)="drop($event)">
+  <div *ngFor="let item of items"
+       class="list-container"
+       cdkDrag>{{item}}</div>
+</div>
+
+
+
+<!--List in order items can be moved  places-->
+<ul cdkDropList
+    (cdkDropListDropped)="drop($event)">
+  <li class="list-container"
+      *ngFor="let item of items"
+      cdkDrag>
+    {{ item }}
+  </li>
+</ul>
+
+
+<!--Item can move around only in specific area-->
+<div class="example-boundary">
+  <div class="list-container" cdkDragBoundary=".example-boundary" cdkDrag>
+    Bound
+  </div>
+</div>
+
+
